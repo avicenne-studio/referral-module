@@ -1,0 +1,14 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+npm run lint || 
+(
+    echo 'Please run ``` npm run lint:fix ``` and fix lint errors before commiting'; 
+    false;
+)
+
+npm run test || 
+(
+    echo 'Please run ``` npm run test ``` and fix test errors before commiting your code'; 
+    false;
+)
